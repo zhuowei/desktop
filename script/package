@@ -67,6 +67,14 @@ function packageWindows () {
   electronInstaller
     .createWindowsInstaller(options)
     .then(() => {
+
+      // for better readability and less space-based tears
+      const nameWithDashes = productName.replace(' ', '-')
+
+      // naming the installers so they make some more sense
+      fs.rename(`${outputDir}\\${productName}Setup.exe`, `${outputDir}\\${nameWithDashes}-setup.exe`)
+      fs.rename(`${outputDir}\\${productName}Setup.msi`, `${outputDir}\\${nameWithDashes}-installer.msi`)
+
       console.log(`Installers created in ${outputDir}`)
       cp.execSync(`powershell ${cleanupCertificatePath}`)
     })
