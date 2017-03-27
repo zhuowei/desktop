@@ -37,12 +37,17 @@ function packageWindows () {
     cp.execSync(`powershell ${setupCertificatePath}`)
   }
 
-  const iconLocation = path.join(__dirname, '..', 'app', 'static', 'icon.ico')
+  const iconSource = path.join(__dirname, '..', 'app', 'static', 'icon.ico')
 
-  if (!fs.existsSync(iconLocation)) {
-    console.error(`expected icon not found at location: ${iconLocation}`)
+  if (!fs.existsSync(iconSource)) {
+    console.error(`expected icon not found at location: ${iconSource}`)
     process.exit(1)
   }
+
+  // this file is name-specific for Squirrel.Windows to render the
+  // DisplayIcon correctly in the uninstall entry in the registry
+  const iconLocation = `${distPath}\\app.ico`
+  fs.copySync(iconSource, iconLocation)
 
   const certificatePath = path.join(__dirname, 'windows-certificate.pfx')
 
