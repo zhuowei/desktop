@@ -1,6 +1,6 @@
 # Installing GitHub Desktop
 
-GitHub Desktop currently supports Windows 7 (or higher) and macOS 10.9 (or higher)
+GitHub Desktop currently supports Windows 7 (or higher) and macOS 10.9 (or higher).
 
 ### macOS
 
@@ -15,17 +15,17 @@ On Windows you have two options:
 
 ## Data Directories
 
-GitHub Desktop will create some directories to manage the files and data it needs to function. If you manage a network of computers and want to install GitHub Desktop, here is more information about how things work.
+GitHub Desktop will create directories to manage the files and data it needs to function. If you manage a network of computers and want to install GitHub Desktop, here is more information about how things work.
 
 ### macOS
- - `~/Library/Application Support/GitHub Desktop/` - this directory user-specific data which the application requires to run, and is created on launch if it doesn't exist. Log files are also stored in this location.
+ - `~/Library/Application Support/GitHub Desktop/` - this directory contains user-specific data which the application requires to run, and is created on launch if it doesn't exist. Log files are also stored in this location.
 
 ### Windows
 
  - `%LOCALAPPDATA%\desktop\` - contains the latest versions of the app, and some older versions if the user has updated from a previous version.
- - `%APPDATA%\GitHub Desktop\` - this directory user-specific data which the application requires to run, and is created on launch if it doesn't exist. Log files are also stored in this location.
+ - `%APPDATA%\GitHub Desktop\` - this directory contains user-specific data which the application requires to run, and is created on launch if it doesn't exist. Log files are also stored in this location.
 
 ## Log Files
 
-GitHub Desktop will generate log files when exceptions are raised, to assist with troubleshooting. They are located in the data directory that GitHub Desktop
+GitHub Desktop will generate log files if an unhandled exception is raised, to assist with troubleshooting. They are located in the data directory that GitHub Desktop uses (see above) and have the format `YYYY-MM-DD.desktop.production.log`, where `YYYY-MM-DD` is the current day.
 
