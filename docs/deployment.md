@@ -1,17 +1,31 @@
-# Deploying GitHub Desktop
+# Installing GitHub Desktop
 
-GitHub Desktop currently supports Windows and macOS. How it gets installed varies on what operating system you are running.
+GitHub Desktop currently supports Windows 7 (or higher) and macOS 10.9 (or higher)
 
- - on macOS
-   - the `GitHub Desktop.zip` can be unpacked and added to your Applications list
- - on Windows you have two options:
-   - the `GitHubDesktopSetup.exe` can be run to install for the current user
-   - the `GitHubDesktopSetup.msi` can be run to install a machine-wide version of GitHub Desktop at `%PROGRAMFILES(x86)\GitHub Desktop Installer\desktop.exe` - each logged-in user will then be able to run GitHub Desktop
+### macOS
 
-## Information for Administrators
+Download the `GitHub Desktop.zip`, unpack the application and add to your Applications list.
 
-If you manage a network of computers and want to install GitHub Desktop, here is more information about how things work:
+### Windows
 
- - `%LOCALAPPDATA%\desktop\` - contains the latest versions of the app, and maybe some older versions if the user has updated from a previous version.
- - `%LOCALAPPDATA%\GitHub Desktop\` - contains user-specific data that Electron requires to run. Also contains log files if errors have occurred while running the app.
+On Windows you have two options:
+
+ - Download the `GitHubDesktopSetup.exe` and run it to install it for the current user.
+ - Download the `GitHubDesktopSetup.msi` and run it to install a machine-wide version of GitHub Desktop - each logged-in user will then be able to run GitHub Desktop from the program at `%PROGRAMFILES(x86)\GitHub Desktop Installer\desktop.exe`
+
+## Data Directories
+
+GitHub Desktop will create some directories to manage the files and data it needs to function. If you manage a network of computers and want to install GitHub Desktop, here is more information about how things work.
+
+### macOS
+ - `~/Library/Application Support/GitHub Desktop/` - this directory user-specific data which the application requires to run, and is created on launch if it doesn't exist. Log files are also stored in this location.
+
+### Windows
+
+ - `%LOCALAPPDATA%\desktop\` - contains the latest versions of the app, and some older versions if the user has updated from a previous version.
+ - `%APPDATA%\GitHub Desktop\` - this directory user-specific data which the application requires to run, and is created on launch if it doesn't exist. Log files are also stored in this location.
+
+## Log Files
+
+GitHub Desktop will generate log files when exceptions are raised, to assist with troubleshooting. They are located in the data directory that GitHub Desktop
 
