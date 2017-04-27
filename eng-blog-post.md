@@ -35,3 +35,6 @@ One of the earliest decisions we had to make was whether we'd try to emulate nat
 For all those reasons, we decided to create our own aesthetic. But that doesn't mean we neglected native UI _conventions_.
 
 For example, on macOS, buttons are Title Case but on Windows they aren't. Or on Windows, the default button in dialogs is conventionally on the left, where on macOS it's on the right.
+
+https://github.com/desktop/desktop/pull/1315
+https://github.com/desktop/desktop/blob/master/app/src/ui/lib/button-group.tsx
