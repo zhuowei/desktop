@@ -16,9 +16,9 @@ But in the web world, alternatives abound. Will you use Browserify? Webpack? Gul
 
 ## Language
 
-We knew from the start that we wouldn't write plain Javascript. We were coming from C#, Objective-C, and Swift where static typing means the compiler can watch our back and help us along the way. The question wasn't if we'd choose a compile-to-Javascript language, but rather which one.
+We knew from the start that we wouldn't write plain Javascript. We were coming from C#, Objective-C, and Swift where static typing means the compiler can watch our back and help us along the way. The question wasn't _if_ we'd choose a compile-to-Javascript language, but rather which one.
 
-At the same time, one of the big benefits to writing an Electron app is Javascript itself. It's everywhere and everyone knows it. This lowers the barrier for entry for an open source project like ours. So while languages like Elm and PureScript are really interesting, they were too far from the mainstream for us to seriously consider. Our best two options were Flow and TypeScript.
+At the same time, one of the big benefits to writing an Electron app is Javascript itself. It's everywhere and everyone knows it. This lowers the barrier for entry for an open source project like ours. So while languages like Elm and PureScript are really interesting and would scratch our static types itch, they were too far outside the mainstream for us to seriously consider. Our best two options were Flow and TypeScript.
 
 ### Flow
 
@@ -36,7 +36,7 @@ We've been very happy with TypeScript. The type system is incredibly expressive,
 
 ## User Interface
 
-Aside from the actual code we were writing, we also had to decide whether we'd try to emulate native UI or create our own UI aesthetic. We had some concerns with trying to emulate native UI:
+Apart from choices about the code, we also had to decide whether we'd try to emulate native UI or create our own UI aesthetic. We had some concerns with trying to emulate native UI:
 
 * We'd have to do it for both macOS and Windows. That meant double the work, and it was unclear what it'd mean if we wanted to support Linux.
 * It'd take a _lot_ of work and time to re-create native widgets in HTML and CSS.
@@ -44,7 +44,11 @@ Aside from the actual code we were writing, we also had to decide whether we'd t
 
 For all those reasons, we decided to create our own aesthetic. But that doesn't mean we neglected native UI _conventions_.
 
-For example, on macOS, buttons are Title Case but on Windows they are sentence case. Or on Windows, the default button in dialogs is conventionally on the left, where on macOS it's on the right. While our buttons may not look like macOS or Windows buttons, they'll be where you expect them to be.
+For example, on macOS, buttons are _Title Case_ but on Windows they are _Sentence case_. Or on Windows, the default button in dialogs is conventionally on the left, where on macOS it's on the right.
 
 https://github.com/desktop/desktop/pull/1315
 https://github.com/desktop/desktop/blob/master/app/src/ui/lib/button-group.tsx
+
+## Performance
+
+Going into the project, we were unsure how to reason about performance. And to be honest, we still don't have a good intuitive sense for where.
