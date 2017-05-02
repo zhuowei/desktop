@@ -44,13 +44,15 @@ With Flow eliminated, TypeScript was the only option left. Thankfully we've been
 
 ## React
 
-Of all the decisions we had to make, choosing React may have been the easiest. React's mental model is far better than anything we have in native development land. UI as a function of its state is an incredibly simple and powerful approach.
+Of all the decisions we had to make, choosing React may have been the easiest. React's mental model is far better than anything we have in native development land. It's incredibly powerful to be able to treat UI as a function of its state.
 
-Even though we love React's model, we fully expected to hit some sort of performance ceiling where we'd need to do some seriously optimizations or refactoring. Happily that has yet to happen. We've done some [performance](https://github.com/desktop/desktop/pull/1281) [work](https://github.com/desktop/desktop/pull/1305), but React has yet to be the bottleneck.
+Even though we loved React's model, we fully expected to hit a performance ceiling where we'd need to do some seriously optimizations or refactoring. Happily that has yet to happen. We've done some [performance](https://github.com/desktop/desktop/pull/1281) [work](https://github.com/desktop/desktop/pull/1305), but React has yet to be the bottleneck. If or when it does, we still have [levers](https://facebook.github.io/react/docs/react-api.html#react.purecomponent) we can pull to make it faster.
 
 ## User Interface
 
-Apart from choices about code, we also had to decide whether we'd try to emulate native UI or create our own aesthetic. We had some concerns with trying to emulate native UI:
+We also had choices to make that didn't involve code. Would we try to emulate native UI or create our own aesthetic?
+
+We had some concerns with trying to emulate native UI:
 
 * We'd have to do it for both macOS and Windows. That meant double the work, and it was unclear what it'd mean if we wanted to support Linux.
 * It'd take a _lot_ of work and time to re-create native widgets in HTML and CSS.
