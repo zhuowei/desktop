@@ -8,15 +8,15 @@
 
 Today we released the new [GitHub Desktop](https://desktop.github.com/), rewritten on [Electron](http://electron.atom.io/).
 
+We've been working on the new GitHub Desktop for [just over a year now](https://github.com/desktop/desktop/commit/7012c51cc29a4ddc5d0f00d3b9763cebab509e4a), and we've learned some things along the way. This is the tale of how 4 native developers bumbled our way through building a Javascript app.
+
 Electron is often seen as a way of enabling web developers to make desktop apps using the technologies they already know: HTML, CSS, Javascript, Node.js. Our situation was a little different.
 
 Everyone on the GitHub Desktop team is a native developer by trade. Three from the .NET world and one from Cocoa. We know how to make native apps. We didn't know those web technologies.
 
-This is the tale of how 4 native developers bumbled their way through building a Javascript app.
-
 ## Choices, Choices
 
-Our first moment of culture shock came in how many choices we had to make. If you're making a native app, your choices are pretty limited from the start. On the macOS side, you'll use Xcode, Swift, and AppKit. On the Windows side, you'll use Visual Studio, C#, and WPF.
+Our first moment of culture shock came in how many choices we had to make. If you're making a native app, your choices are pretty limited. On the macOS side, you'll use Xcode, Swift, and AppKit. On the Windows side, you'll use Visual Studio, C#, and WPF.
 
 But in the web world, choices abound. Browserify? Webpack? Gulp? Grunt? React? Angular? SASS? CSS in JS? Some compile-to-Javascript language?
 
@@ -24,7 +24,7 @@ But in the web world, choices abound. Browserify? Webpack? Gulp? Grunt? React? A
 
 Writing plain Javascript was never a real option. We were coming from C#, Objective-C, and Swift where their static type systems mean the compiler can watch our back and help us along the way. The question wasn't _if_ we'd choose a compile-to-Javascript language, but rather which one.
 
-At the same time, one of the big benefits to writing an Electron app is Javascript itself. It's everywhere and everyone knows it. This lowers the barrier of entry for an open source project like ours. So while languages like Elm and PureScript are really interesting and would scratch our static types itch, they were too far outside the mainstream for us to seriously consider.
+At the same time, one of the big benefits to writing an Electron app is Javascript itself. It's everywhere and everyone knows it. This lowers the barrier of entry for an open source project like ours. So while languages like [Elm](http://elm-lang.org/) and [PureScript](http://purescript.org/) are really interesting and would scratch our static types itch, they were too far outside the mainstream for us to seriously consider.
 
 Our best two options were Flow and TypeScript.
 
@@ -40,7 +40,13 @@ TypeScript is a language from Microsoft which compiles to Javascript. It is conc
 
 It was also missing some features compared to Flow. The one that was most disappointing was that it didn't support non-nullable types. Thankfully the TypeScript team was already working on it and we were [able to update](https://github.com/desktop/desktop/pull/141) not too long into the project.
 
-We've been very happy with TypeScript. The type system is incredibly expressive, the team at Microsoft moves quickly and is responsive to the community, and the community seems to grow every day. It can't remove all the warts Javascript proudly wears, but it can put bandaids on most of them.
+With Flow eliminated, TypeScript was the only option left. Thankfully we've been very happy with it. The type system is incredibly expressive, the team at Microsoft moves quickly and is responsive to the community, and the community seems to grow every day. It can't remove all the warts Javascript proudly wears, but it can cover most of them with bandaids.
+
+## React
+
+Of all the decisions we had to make, choosing React may have been the easiest. React's mental model is far better than anything we have in native development land. UI as a function of its state is an incredibly simple and powerful approach.
+
+Even though we love React's model, we fully expected to hit some sort of performance ceiling where we'd need to do some seriously optimizations or refactoring. Happily that has yet to happen. We've done some [performance](https://github.com/desktop/desktop/pull/1281) [work](https://github.com/desktop/desktop/pull/1305), but React has yet to be the bottleneck.
 
 ## User Interface
 
@@ -56,7 +62,3 @@ For example, on macOS, buttons are _Title Case_ but on Windows they are _Sentenc
 
 https://github.com/desktop/desktop/pull/1315
 https://github.com/desktop/desktop/blob/master/app/src/ui/lib/button-group.tsx
-
-## Electron
-
-We weren't just new to the Javascript world, we were also new to Electron.
